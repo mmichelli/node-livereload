@@ -3,9 +3,7 @@ node-livereload
 
 An implementation of the LiveReload server in Node.js.
 
-Install the browser plugin and read more about the project at:
-
-  https://github.com/mockko/livereload
+Install the browser plugin and read more about the project at [mockko/livereload](https://github.com/mockko/livereload).
 
 # Example
 
