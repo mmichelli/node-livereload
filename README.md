@@ -20,7 +20,7 @@ Use with a connect server:
     ).listen(3000);
 
     livereload = require('livereload');
-    server = livereload.createServer(exts: ['less']);
+    server = livereload.createServer({exts: ['less']});
     server.watch(__dirname + "/public");
 
 # Installation
