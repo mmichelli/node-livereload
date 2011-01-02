@@ -2,7 +2,7 @@ fs   = require 'fs'
 path = require 'path'
 ws   = require 'websocket-server'
 
-version = '1.4'
+version = '1.5'
 defaultPort = 35729
 
 defaultExts = [
