@@ -11,6 +11,9 @@
   , "url": "http://github.com/josh/node-livereload.git"
   }
 , "main": "./livereload.js"
+, "bin": {
+    "livereload": "./bin/livereload"
+}
 , "dependencies": {
     "websocket-server": ">= 1.1.00"
   }

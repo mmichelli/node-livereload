@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var args = process.argv.slice(2);          
+
+livereload = require('../livereload');
+
+server = livereload.createServer({debug:"true"}); 
+
+if( 0 == args.length )
+{
+   server.watch(__dirname + "/"  );  
+} else {
+  args.forEach(function(dir){     
+    console.log( dir); 
+    server.watch( dir);
+  })
+}
+
+ 
