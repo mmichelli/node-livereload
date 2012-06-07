@@ -29,6 +29,6 @@ Use with a connect server:
 
 # License
 
-Copyright (c) 2010 Joshua Peek.
+Copyright (c) 2010 Joshua Peek and Brian P. Hogan.
 
 Released under the MIT license. See `LICENSE` for details.

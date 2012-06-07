@@ -1,6 +1,6 @@
 { "name": "livereload"
 , "description": "LiveReload server"
-, "version": "0.2.0"
+, "version": "0.3.0"
 , "author": "Joshua Peek"
 , "licenses": [
   { "type": "MIT"
@@ -12,7 +12,7 @@
   }
 , "main": "./livereload.js"
 , "dependencies": {
-    "websocket-server": ">= 1.1.00"
+    "websocket.io": ">= 0.1.0"
   }
 , "engines" : { "node" : ">=0.2.0" }
 }

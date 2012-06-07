@@ -1,6 +1,6 @@
 fs   = require 'fs'
 path = require 'path'
-ws   = require 'websocket-server'
+ws   = require 'websocket.io'
 
 version = '1.5'
 defaultPort = 35729
@@ -28,23 +28,27 @@ class Server
     @config.applyJSLive  ?= false
     @config.applyCSSLive ?= true
 
-    @server = ws.createServer()
+    @sockets = []
+    
+  listen: ->
+    @debug "LiveReload is waiting for browser to connect."
+    
+    @server = ws.listen(@config.port)
 
     @server.on 'connection', @onConnection.bind @
     @server.on 'close',      @onClose.bind @
 
-  listen: ->
-    @debug "LiveReload is waiting for browser to connect."
-    @server.listen @config.port
 
-  onConnection: (connection) ->
+  onConnection: (socket) ->
     @debug "Browser connected."
-    connection.write "!!ver:#{@config.version}"
+    socket.send "!!ver:#{@config.version}"
 
-    connection.on 'message', (message) =>
+    socket.on 'message', (message) =>
       @debug "Browser URL: #{message}"
 
-  onClose: (connection) ->
+    @sockets.push socket
+    
+  onClose: (socket) ->
     @debug "Browser disconnected."
 
   walkTree: (dirname, callback) ->
@@ -80,15 +84,18 @@ class Server
 
   refresh: (path) ->
     @debug "Refresh: #{path}"
-    @server.broadcast JSON.stringify ['refresh',
+    data = JSON.stringify ['refresh',
       path: path,
       apply_js_live: @config.applyJSLive,
       apply_css_live: @config.applyCSSLive
     ]
 
+    for socket in @sockets
+      socket.send data
+
   debug: (str) ->
     if @config.debug
-      process.binding('stdio').writeError "#{str}\n"
+      console.log "#{str}\n"
 
 exports.createServer = (args...) ->
   server = new Server args...
