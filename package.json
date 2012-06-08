@@ -1,18 +1,21 @@
 { "name": "livereload"
 , "description": "LiveReload server"
 , "version": "0.3.0"
-, "author": "Joshua Peek"
+, "contributors": [
+    { "name": "Joshua Peek" }
+  , { "name": "Brian P. Hogan", "email": "brianhogan@napcs.com" }
+  ]
 , "licenses": [
   { "type": "MIT"
-  , "url": "https://github.com/josh/node-livereload/blob/master/LICENSE"
+  , "url": "https://github.com/napcs/node-livereload/blob/master/LICENSE"
   }]
 , "repository":
   { "type": "git"
-  , "url": "http://github.com/josh/node-livereload.git"
+  , "url": "http://github.com/napcs/node-livereload.git"
   }
 , "main": "./livereload.js"
 , "dependencies": {
     "websocket.io": ">= 0.1.0"
   }
-, "engines" : { "node" : ">=0.2.0" }
+, "engines" : { "node" : ">=0.4.0" }
 }

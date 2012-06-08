@@ -9,7 +9,7 @@
 
   ws = require('websocket.io');
 
-  version = '1.5';
+  version = '1.6';
 
   defaultPort = 35729;
 
