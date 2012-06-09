@@ -1,6 +1,6 @@
 { "name": "livereload"
 , "description": "LiveReload server"
-, "version": "0.3.0"
+, "version": "0.3.1"
 , "contributors": [
     { "name": "Joshua Peek" }
   , { "name": "Brian P. Hogan", "email": "brianhogan@napcs.com" }
@@ -13,9 +13,10 @@
   { "type": "git"
   , "url": "http://github.com/napcs/node-livereload.git"
   }
-, "bin": { "livereload": "./bin.js" }
-, "main": "./livereload.js"
+, "bin": { "livereload": "./bin/livereload.js" }
+, "main": "./lib/livereload.js"
 , "dependencies": {
+    "opts": ">= 1.2.0",
     "websocket.io": ">= 0.1.0"
   }
 , "engines" : { "node" : ">=0.4.0" }
