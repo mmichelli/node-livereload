@@ -1,3 +1,0 @@
-[submodule "livereload-js"]
-	path = livereload-js
-	url = git://github.com/livereload/livereload-js.git
