@@ -36,6 +36,7 @@ class Server
     @debug "LiveReload is waiting for browser to connect."
     
     if @config.server
+      @config.server.listen @config.port
       @server = ws.attach(@config.server)
     else
       @server = ws.listen(@config.port)
@@ -108,7 +109,6 @@ exports.createServer = (config) ->
       res.writeHead(200, {'Content-Type': 'text/javascript'})
       res.end fs.readFileSync __dirname + '/../ext/livereload.js'
 
-  app.listen(defaultPort)
   config.server = app
 
   server = new Server config
