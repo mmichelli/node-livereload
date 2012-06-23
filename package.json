@@ -1,9 +1,8 @@
 { "name": "livereload"
 , "description": "LiveReload server"
-, "version": "0.3.2"
+, "version": "0.3.3"
 , "contributors": [
     { "name": "Joshua Peek" }
-  , { "name": "Eugene Ware" }
   , { "name": "Brian P. Hogan", "email": "brianhogan@napcs.com" }
   ]
 , "licenses": [
