@@ -106,7 +106,7 @@ exports.createServer = (config) ->
   app = http.createServer ( req, res )->
     if url.parse(req.url).pathname is '/livereload.js'
       res.writeHead(200, {'Content-Type': 'text/javascript'})
-      res.end fs.readFileSync __dirname + '/../livereload-js/dist/livereload.js'
+      res.end fs.readFileSync __dirname + '/../ext/livereload.js'
 
   app.listen(defaultPort)
   config.server = app
