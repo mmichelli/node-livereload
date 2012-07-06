@@ -1,22 +1,38 @@
-livereload = require('../lib/livereload')
+livereload = require '../lib/livereload'
 should = require 'should'
-request = require('request')
-fs = require('fs')
+request = require 'request'
+http = require 'http'
+url = require 'url'
+fs = require 'fs'
+WebSocket = require 'ws'
 
-describe 'livereload http file servingt', ->
-	it 'should serve up livereload.js', (done) ->
-		server = livereload.createServer({port: 35729, debug: true})
+describe 'livereload http file serving', ->
 
-		fileContents = fs.readFileSync('./ext/livereload.js').toString()
+  it 'should serve up livereload.js', (done) ->
+    server = livereload.createServer({port: 35729})
 
-		request 'http://localhost:35729/livereload.js?snipver=1', (error, response, body) ->
-			should.not.exist error
-			response.statusCode.should.equal 200
-			fileContents.should.equal body
+    fileContents = fs.readFileSync('./ext/livereload.js').toString()
 
-			server.config.server.close()
+    request 'http://localhost:35729/livereload.js?snipver=1', (error, response, body) ->
+      should.not.exist error
+      response.statusCode.should.equal 200
+      fileContents.should.equal body
 
-			done()
+      server.config.server.close()
+
+      done()
+
+  it 'should connect to the websocket server', (done) ->
+    server = livereload.createServer({port: 35729})
+
+    ws = new WebSocket('ws://localhost:35729/livereload')
+    ws.on 'message', (data, flags) ->
+      data.should.equal '!!ver:1.6'
+
+      server.config.server.close()
+
+      done()
+
   it 'should allow you to override the internal http server', (done) ->
     app = http.createServer (req, res) ->
       if url.parse(req.url).pathname is '/livereload.js'
