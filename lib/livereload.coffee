@@ -109,7 +109,7 @@ exports.createServer = (config) ->
       res.writeHead(200, {'Content-Type': 'text/javascript'})
       res.end fs.readFileSync __dirname + '/../ext/livereload.js'
 
-  config.server = app
+  config.server ?= app
 
   server = new Server config
   server.listen()
