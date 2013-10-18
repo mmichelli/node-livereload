@@ -36,7 +36,13 @@ You can also use this with a Connect server:
     server = livereload.createServer({exts: ['less']});
     server.watch(__dirname + "/public");
 
-# Options
+# Command-line Options
+
+The commandline options are
+
+* `-p` or `--port` to specify the listening port
+
+# API Options
 
 The `createServer()` method supports a few basic options, passed as a JavaScript object:
 
@@ -53,6 +59,6 @@ Right now this is extremely simple. It relies on polling so there's a delay in r
 
 # License
 
-Copyright (c) 2010-2012 Joshua Peek and Brian P. Hogan.
+Copyright (c) 2010-2013 Joshua Peek and Brian P. Hogan.
 
 Released under the MIT license. See `LICENSE` for details.
