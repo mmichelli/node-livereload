@@ -9,7 +9,7 @@ defaultPort = 35729
 
 defaultExts = [
   'html', 'css', 'js', 'png', 'gif', 'jpg',
-  'php', 'php5', 'py', 'rb', 'erb'
+  'php', 'php5', 'py', 'rb', 'erb', 'coffee'
 ]
 
 defaultExclusions = [/\.git\//, /\.svn\//, /\.hg\//]
