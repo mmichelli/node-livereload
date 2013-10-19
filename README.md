@@ -12,7 +12,6 @@ To use livereload from the command line:
     $ npm install -g livereload
     $ livereload [path]
 
-    
 
 Or to use the api within a project:
 
@@ -38,9 +37,18 @@ You can also use this with a Connect server:
 
 # Command-line Options
 
+
 The commandline options are
 
 * `-p` or `--port` to specify the listening port
+* `-i` or `--interval` to specify the listening interval in milliseconds. Default is 1000.
+
+Specify the path when using the options.
+
+~~~
+$ livereload . -i 200
+~~~
+
 
 # API Options
 
@@ -48,7 +56,7 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
 
 * `port` is the listening port. It defaults to `35729` which is what the LiveReload extensions use currently.
 * `exts` is an array of extensions you want to observe. The default extensions are  `html`, `css`, `js`, `png`, `gif`, `jpg`,
-  `php`, `php5`, `py`, `rb`, and `erb`
+  `php`, `php5`, `py`, `rb`,  `erb`, and "coffee."
 * `applyJSLive` tells LiveReload to reload JavaScript files in the background instead of reloading the page. The default for this is `false`.
 * `applyCSSLive` tells LiveReload to reload CSS files in the background instead of refreshing the page. The default for this is `true`.
 * `exclusions` lets you specify files to ignore. By default, this includes `.git/`, `.svn/`, and `.hg/`
