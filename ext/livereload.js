@@ -426,8 +426,8 @@ Options.extract = function(document) {
 
   numberOfMatchingSegments = function(path1, path2) {
     var comps1, comps2, eqCount, len;
-    path1 = path1.replace(/^\/+/, '').toLowerCase();
-    path2 = path2.replace(/^\/+/, '').toLowerCase();
+    path1 = path1.replace(/\\/g,'/').replace(/^\/+/, '').toLowerCase();
+    path2 = path2.replace(/\\/g,'/').replace(/^\/+/, '').toLowerCase();
     if (path1 === path2) {
       return 10000;
     }
