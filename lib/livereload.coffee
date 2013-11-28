@@ -29,6 +29,10 @@ class Server
 
     @config.applyJSLive  ?= false
     @config.applyCSSLive ?= true
+    @config.applyImgLive ?= true
+
+    @config.originalPath ?= ''
+    @config.overrideURL ?= ''
 
     @config.interval ?= 1000
 
@@ -95,7 +99,10 @@ class Server
     data = JSON.stringify ['refresh',
       path: path,
       apply_js_live: @config.applyJSLive,
-      apply_css_live: @config.applyCSSLive
+      apply_css_live: @config.applyCSSLive,
+      apply_img_live: @config.applyImgLive,
+      original_path: this.config.originalPath,
+      override_url: this.config.overrideURL
     ]
 
     for socket in @sockets

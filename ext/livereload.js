@@ -61,7 +61,7 @@ __protocol.Parser = Parser = (function() {
     return this.protocol = null;
   };
   Parser.prototype.process = function(data) {
-    var command, message, options, _ref;
+    var command, message, options, _ref, _ref2;
     try {
       if (!(this.protocol != null)) {
         if (data.match(/^!!ver:([\d.]+)$/)) {
@@ -90,7 +90,10 @@ __protocol.Parser = Parser = (function() {
         return this.handlers.message({
           command: 'reload',
           path: options.path,
-          liveCSS: (_ref = options.apply_css_live) != null ? _ref : true
+          liveCSS: (_ref = options.apply_css_live) != null ? _ref : true,
+          liveImg: (_ref2 = options.apply_img_live) != null ? _ref2 : true,
+          originalPath: options.original_path,
+          overrideURL: options.override_url
         });
       } else {
         message = this._parseMessage(data, ['reload', 'alert']);
