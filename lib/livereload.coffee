@@ -53,6 +53,8 @@ class Server
 
     socket.on 'message', (message) =>
       @debug "Browser URL: #{message}"
+    socket.on 'error', (err) =>
+      @debug "Error in client socket: #{err}"
 
     @sockets.push socket
     
