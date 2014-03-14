@@ -35,6 +35,27 @@ You can also use this with a Connect server:
     server = livereload.createServer({exts: ['less']});
     server.watch(__dirname + "/public");
 
+Using originalPath option:
+
+```js
+// server.js
+var server = livereload.createServer({
+    originalPath: "http://domain.com"
+});
+server.watch('/User/Workspace/test');
+```  
+
+`$ node server.js`  
+
+```html
+<!-- html -->
+<head>
+    <link rel="stylesheet" href="http://domain.com/css/style.css">
+</head>
+```  
+
+When `/User/Workspace/test/css/style.css` modified, the stylesheet will be reload.
+
 # Command-line Options
 
 
@@ -60,6 +81,8 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
 * `applyJSLive` tells LiveReload to reload JavaScript files in the background instead of reloading the page. The default for this is `false`.
 * `applyCSSLive` tells LiveReload to reload CSS files in the background instead of refreshing the page. The default for this is `true`.
 * `exclusions` lets you specify files to ignore. By default, this includes `.git/`, `.svn/`, and `.hg/`
+* `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.  
+* `overrideURL` override the stylesheet href with your set.
 
 # Limitations
 
