@@ -58,7 +58,6 @@ When `/User/Workspace/test/css/style.css` modified, the stylesheet will be reloa
 
 # Command-line Options
 
-
 The commandline options are
 
 * `-p` or `--port` to specify the listening port
@@ -90,6 +89,6 @@ Right now this is extremely simple. It relies on polling so there's a delay in r
 
 # License
 
-Copyright (c) 2010-2013 Joshua Peek and Brian P. Hogan.
+Copyright (c) 2010-2014 Brian P. Hogan and Joshua Peek 
 
 Released under the MIT license. See `LICENSE` for details.

@@ -4,7 +4,7 @@ ws   = require 'websocket.io'
 http  = require 'http'
 url = require 'url'
 
-version = '1.6'
+protocol_version = '1.6'
 defaultPort = 35729
 
 defaultExts = [
@@ -18,7 +18,7 @@ class Server
   constructor: (@config) ->
     @config ?= {}
 
-    @config.version ?= version
+    @config.version ?= protocol_version
     @config.port    ?= defaultPort
 
     @config.exts       ?= []
