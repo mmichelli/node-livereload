@@ -49,3 +49,14 @@ describe 'livereload http file serving', ->
       server.config.server.close()
 
       done()
+
+describe 'livereload file watching', ->
+
+  it 'should correctly watch common files' ->
+    // TODO check it watches default exts
+
+  it 'should correctly ignore common exclusions' ->
+    // TODO check it ignores common exclusions
+
+  it 'should not exclude a dir named git' ->
+    // cf. issue #20
