@@ -52,11 +52,11 @@ describe 'livereload http file serving', ->
 
 describe 'livereload file watching', ->
 
-  it 'should correctly watch common files' ->
-    // TODO check it watches default exts
+  it 'should correctly watch common files', ->
+    # TODO check it watches default exts
 
-  it 'should correctly ignore common exclusions' ->
-    // TODO check it ignores common exclusions
+  it 'should correctly ignore common exclusions', ->
+    # TODO check it ignores common exclusions
 
-  it 'should not exclude a dir named git' ->
-    // cf. issue #20
+  it 'should not exclude a dir named git', ->
+    # cf. issue #20
