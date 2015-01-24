@@ -83,6 +83,14 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
 * `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.  
 * `overrideURL` override the stylesheet href with your set.
 
+# Watch Multiple Paths
+
+Passing an array of paths will allow you to watch multiple directories. All directories have the same configuration options.
+
+```js
+server.watch([__dirname + "/public", __dirname + "/views"]);
+```
+
 # Limitations
 
 Right now this is extremely simple. It relies on polling so there's a delay in refreshing the browser. It could be faster.
