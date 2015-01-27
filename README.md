@@ -74,6 +74,7 @@ $ livereload . -i 200
 
 The `createServer()` method supports a few basic options, passed as a JavaScript object:
 
+* `https` is an optional object of options to be passed to [https.createServer](http://nodejs.org/api/https.html#https_https_createserver_options_requestlistener) (if not provided, `http.createServer` is used instead)
 * `port` is the listening port. It defaults to `35729` which is what the LiveReload extensions use currently.
 * `exts` is an array of extensions you want to observe. The default extensions are  `html`, `css`, `js`, `png`, `gif`, `jpg`,
   `php`, `php5`, `py`, `rb`,  `erb`, and "coffee."
@@ -89,6 +90,6 @@ Right now this is extremely simple. It relies on polling so there's a delay in r
 
 # License
 
-Copyright (c) 2010-2014 Brian P. Hogan and Joshua Peek 
+Copyright (c) 2010-2014 Brian P. Hogan and Joshua Peek
 
 Released under the MIT license. See `LICENSE` for details.
