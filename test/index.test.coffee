@@ -4,6 +4,7 @@ request = require 'request'
 http = require 'http'
 url = require 'url'
 fs = require 'fs'
+path = require 'path'
 WebSocket = require 'ws'
 
 describe 'livereload http file serving', ->
@@ -50,13 +51,36 @@ describe 'livereload http file serving', ->
 
       done()
 
+  it 'should allow you to specify ssl certificates to run via https', (done)->
+    server = livereload.createServer
+      port: 35729
+      https:
+        cert: fs.readFileSync path.join __dirname, 'ssl/localhost.cert'
+        key: fs.readFileSync path.join __dirname, 'ssl/localhost.key'
+
+    fileContents = fs.readFileSync('./ext/livereload.js').toString()
+
+    # allow us to use our self-signed cert for testing
+    unsafeRequest = request.defaults
+      strictSSL: false
+      rejectUnauthorized: false
+
+    unsafeRequest 'https://localhost:35729/livereload.js?snipver=1', (error, response, body) ->
+      should.not.exist error
+      response.statusCode.should.equal 200
+      fileContents.should.equal body
+
+      server.config.server.close()
+
+      done()
+
 describe 'livereload file watching', ->
 
-  it 'should correctly watch common files' ->
-    // TODO check it watches default exts
+  it 'should correctly watch common files', ->
+    # TODO check it watches default exts
 
-  it 'should correctly ignore common exclusions' ->
-    // TODO check it ignores common exclusions
+  it 'should correctly ignore common exclusions', ->
+    # TODO check it ignores common exclusions
 
-  it 'should not exclude a dir named git' ->
-    // cf. issue #20
+  it 'should not exclude a dir named git', ->
+    # cf. issue #20

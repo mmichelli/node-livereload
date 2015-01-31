@@ -1,6 +1,6 @@
 { "name": "livereload"
 , "description": "LiveReload server"
-, "version": "0.3.5"
+, "version": "0.3.6"
 , "contributors": [
     { "name": "Brian P. Hogan", "email": "brianhogan@napcs.com" }
   ]
@@ -23,7 +23,7 @@
     "should": ">= 0.6.3",
     "ws": ">= 0.4.20",
     "mocha": ">= 1.0.3",
-    "coffee-script": ">= 1.3.0"
+    "coffee-script": ">= 1.8.0"
   }
 , "engines" : { "node" : ">=0.4.0" }
 , "scripts": {

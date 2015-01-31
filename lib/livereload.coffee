@@ -2,6 +2,7 @@ fs   = require 'fs'
 path = require 'path'
 ws   = require 'websocket.io'
 http  = require 'http'
+https = require 'https'
 url = require 'url'
 
 protocol_version = '1.6'
@@ -117,10 +118,14 @@ class Server
       console.log "#{str}\n"
 
 exports.createServer = (config = {}) ->
-  app = http.createServer ( req, res )->
+  requestHandler = ( req, res )->
     if url.parse(req.url).pathname is '/livereload.js'
       res.writeHead(200, {'Content-Type': 'text/javascript'})
       res.end fs.readFileSync __dirname + '/../ext/livereload.js'
+  if !config.https?
+    app = http.createServer requestHandler
+  else
+    app = https.createServer config.https, requestHandler
 
   config.server ?= app
 
