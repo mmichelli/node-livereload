@@ -91,11 +91,13 @@ class Server
     walk dirname, callback
 
   watch: (dirname) ->
-    @walkTree dirname, (err, filename) =>
-      throw err if err
-      fs.watchFile filename, {interval: @config.interval}, (curr, prev) =>
-        if curr.mtime > prev.mtime
-          @refresh filename
+    dirname = [dirname] if typeof dirname is "string"
+
+    dirname.forEach (dir) =>
+      @walkTree dir, (err, filename) =>
+        throw err if err
+        fs.watchFile filename, {interval: @config.interval}, (curr, prev) =>
+          @refresh filename if curr.mtime > prev.mtime
 
   refresh: (path) ->
     @debug "Refresh: #{path}"

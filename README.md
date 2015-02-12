@@ -1,3 +1,4 @@
+
 node-livereload
 ===============
 
@@ -34,6 +35,14 @@ You can also use this with a Connect server:
     livereload = require('livereload');
     server = livereload.createServer({exts: ['less']});
     server.watch(__dirname + "/public");
+
+Watching multiple paths:
+
+Passing an array of paths will allow you to watch multiple directories. All directories have the same configuration options.
+
+```js
+server.watch([__dirname + "/js", __dirname + "/css"]);
+```
 
 Using originalPath option:
 
