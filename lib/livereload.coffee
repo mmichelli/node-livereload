@@ -84,7 +84,7 @@ class Server
             if !err and stats.isDirectory()
               walk filename
             else
-              for ext in exts when filename.match "\.#{ext}$"
+              for ext in exts when filename.match "\\.#{ext}$"
                 callback err, filename
                 break
 
