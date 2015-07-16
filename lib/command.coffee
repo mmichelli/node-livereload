@@ -3,7 +3,7 @@ runner = ->
   livereload = require './livereload'
   resolve    = require('path').resolve
   opts       = require 'opts'
-  debug      = true;
+  debug      = false;
   opts.parse [
     {
       short: "p"
@@ -20,11 +20,11 @@ runner = ->
       required: false
     }
     {
-      short: "q"
-      long: "quiet"
-      description: "supress the debugging console logs",
+      short: "d"
+      long: "debug"
+      description: "Additional debugging information",
       required: false,
-      callback: -> debug = false
+      callback: -> debug = true
     }
   ].reverse(), true
 
@@ -34,12 +34,9 @@ runner = ->
   server = livereload.createServer({port: port, interval: interval, debug: debug})
 
   path = resolve(process.argv[2] || '.')
-  if debug
-    console.log "Starting LiveReload for #{path} on port #{port}."
-
+  console.log "Starting LiveReload for #{path} on port #{port}."
   server.watch(path)
-  if debug
-    console.log "Polling for changes every #{interval}ms."
+  console.log "Polling for changes every #{interval}ms."
 
 module.exports =
   run: runner
