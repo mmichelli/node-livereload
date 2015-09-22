@@ -89,6 +89,7 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
   `php`, `php5`, `py`, `rb`,  `erb`, and "coffee."
 * `applyJSLive` tells LiveReload to reload JavaScript files in the background instead of reloading the page. The default for this is `false`.
 * `applyCSSLive` tells LiveReload to reload CSS files in the background instead of refreshing the page. The default for this is `true`.
+* `applyImgLive` tells LiveReload to reload image files in the background instead of refreshing the page. The default for this is `true`. Namely for these extensions: jpg, jpeg, png, gif
 * `exclusions` lets you specify files to ignore. By default, this includes `.git/`, `.svn/`, and `.hg/`
 * `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.  
 * `overrideURL` override the stylesheet href with your set.
