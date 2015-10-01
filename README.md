@@ -38,7 +38,7 @@ You can also use this with a Connect server:
 
 Watching multiple paths:
 
-Passing an array of paths will allow you to watch multiple directories. All directories have the same configuration options.
+Passing an array of paths or glob patterns will allow you to watch multiple directories. All directories have the same configuration options.
 
 ```js
 server.watch([__dirname + "/js", __dirname + "/css"]);
