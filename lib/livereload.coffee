@@ -57,7 +57,8 @@ class Server
     socket.send "!!ver:#{@config.version}"
 
     socket.on 'message', (message) =>
-      @debug "Browser URL: #{message}"
+      if (@config.debug)
+        @debug "Browser URL: #{message}"
     socket.on 'error', (err) =>
       @debug "Error in client socket: #{err}"
 
@@ -100,7 +101,8 @@ class Server
           @refresh filename if curr.mtime > prev.mtime
 
   refresh: (path) ->
-    @debug "Refresh: #{path}"
+    if (@config.debug)
+      @debug "Refresh: #{path}"
     data = JSON.stringify ['refresh',
       path: path,
       apply_js_live: @config.applyJSLive,
