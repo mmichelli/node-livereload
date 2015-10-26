@@ -1,6 +1,6 @@
 fs   = require 'fs'
 path = require 'path'
-ws   = require 'websocket.io'
+ws   = require 'ws'
 http  = require 'http'
 https = require 'https'
 url = require 'url'
@@ -44,9 +44,9 @@ class Server
 
     if @config.server
       @config.server.listen @config.port
-      @server = ws.attach(@config.server)
+      @server = new ws.Server({server: @config.server})
     else
-      @server = ws.listen(@config.port)
+      @server = new ws.Server({port: @config.port})
 
     @server.on 'connection', @onConnection.bind @
     @server.on 'close',      @onClose.bind @
