@@ -36,10 +36,6 @@ class Server
     @config.originalPath ?= ''
     @config.overrideURL ?= ''
 
-    @config.interval ?= 1000
-
-    @sockets = []
-
   listen: ->
     @debug "LiveReload is waiting for browser to connect."
 
@@ -52,19 +48,21 @@ class Server
     @server.on 'connection', @onConnection.bind @
     @server.on 'close',      @onClose.bind @
 
-
   onConnection: (socket) ->
     @debug "Browser connected."
+
     socket.send "!!ver:#{@config.version}"
 
     socket.on 'message', (message) =>
       if (@config.debug)
         @debug "Browser URL: #{message}"
+
+    # FIXME: This doesn't seem to be firing either.
     socket.on 'error', (err) =>
       @debug "Error in client socket: #{err}"
 
-    @sockets.push socket
 
+  # FIXME: This does not seem to be firing
   onClose: (socket) ->
     @debug "Browser disconnected."
 
@@ -93,8 +91,10 @@ class Server
       override_url: this.config.overrideURL
     ]
 
-    for socket in @sockets
-      socket.send data
+    for socket in @server.clients
+      socket.send data, (error) =>
+        if error
+          @debug error
 
   debug: (str) ->
     if @config.debug

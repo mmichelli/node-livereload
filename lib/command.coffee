@@ -1,10 +1,20 @@
 runner = ->
-
+  pjson      = require('../package.json')
+  version    = pjson.version
   livereload = require './livereload'
   resolve    = require('path').resolve
   opts       = require 'opts'
   debug      = false;
   opts.parse [
+    {
+      short: "v"
+      long:  "version"
+      description: "Show the version"
+      required: false
+      callback: ->
+        console.log version
+        process.exit(1)
+    }
     {
       short: "p"
       long:  "port"
@@ -13,11 +23,11 @@ runner = ->
       required: false
     }
     {
-      short: "i"
-      long:  "interval"
-      description: "Specify the interval"
+      short: "x"
+      long: "exclusions"
+      description: "Exclude files by specifying an array of regular expressions. Will be appended to default value which is [/\\.git\//, /\\.svn\//, /\\.hg\//]",
+      required: false,
       value: true
-      required: false
     }
     {
       short: "d"
@@ -29,14 +39,17 @@ runner = ->
   ].reverse(), true
 
   port = opts.get('port') || 35729
-  interval = opts.get('interval') || 1000
+  exclusions = opts.get('exclusions') || []
 
-  server = livereload.createServer({port: port, interval: interval, debug: debug})
+  server = livereload.createServer({
+    port: port
+    debug: debug
+    exclusions: exclusions
+  })
 
   path = resolve(process.argv[2] || '.')
-  console.log "Starting LiveReload for #{path} on port #{port}."
+  console.log "Starting LiveReload v#{version} for #{path} on port #{port}."
   server.watch(path)
-  console.log "Polling for changes every #{interval}ms."
 
 module.exports =
   run: runner
