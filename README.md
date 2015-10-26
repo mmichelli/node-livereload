@@ -52,16 +52,16 @@ var server = livereload.createServer({
     originalPath: "http://domain.com"
 });
 server.watch('/User/Workspace/test');
-```  
+```
 
-`$ node server.js`  
+`$ node server.js`
 
 ```html
 <!-- html -->
 <head>
     <link rel="stylesheet" href="http://domain.com/css/style.css">
 </head>
-```  
+```
 
 When `/User/Workspace/test/css/style.css` modified, the stylesheet will be reload.
 
@@ -71,6 +71,7 @@ The commandline options are
 
 * `-p` or `--port` to specify the listening port
 * `-i` or `--interval` to specify the listening interval in milliseconds. Default is 1000.
+* `-d` or `--debug` to show debug messages when the browser reloads.
 
 Specify the path when using the options.
 
@@ -91,7 +92,7 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
 * `applyCSSLive` tells LiveReload to reload CSS files in the background instead of refreshing the page. The default for this is `true`.
 * `applyImgLive` tells LiveReload to reload image files in the background instead of refreshing the page. The default for this is `true`. Namely for these extensions: jpg, jpeg, png, gif
 * `exclusions` lets you specify files to ignore. By default, this includes `.git/`, `.svn/`, and `.hg/`
-* `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.  
+* `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.
 * `overrideURL` override the stylesheet href with your set.
 
 # Limitations
