@@ -99,6 +99,7 @@ The commandline options are
 
 * `-p` or `--port` to specify the listening port
 * `-d` or `--debug` to show debug messages when the browser reloads.
+* `-e` or `--exts` to include additional extentions that you want to observe. An example being -e 'jade scss'.  
 
 Specify the path when using the options.
 
