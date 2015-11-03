@@ -52,19 +52,36 @@ Then, create a server and fire it up.
     server = livereload.createServer();
     server.watch(__dirname + "/public");
 
-You can also use this with a Connect server:
+You can also use this with a Connect server. Here's an example of a simple server
+using `connect` and a few other modules just to give you an idea:
 
-    connect = require('connect');
-    connect.createServer(
-      connect.compiler({ src: __dirname + "/public", enable: ['less'] }),
-      connect.staticProvider(__dirname + "/public")
-    ).listen(3000);
+~~~
+var connect  = require('connect');
+var compiler = require('connect-compiler');
+var static = require('serve-static');
 
-    livereload = require('livereload');
-    server = livereload.createServer({exts: ['less']});
-    server.watch(__dirname + "/public");
+var server = connect();
 
-Watching multiple paths:
+server.use(
+  compiler({
+      enabled : [ 'coffee', 'uglify' ],
+      src     : 'src',
+      dest    : 'public'
+  })
+);
+
+server.use(  static(__dirname + '/public'));
+
+server.listen(3000);
+
+livereload = require('livereload');
+server = livereload.createServer();
+server.watch(__dirname + "/public");
+~~~
+
+You can then start up the server which will listen on port `3000`.
+
+## Watching multiple paths:
 
 Passing an array of paths or glob patterns will allow you to watch multiple directories. All directories have the same configuration options.
 
@@ -72,7 +89,7 @@ Passing an array of paths or glob patterns will allow you to watch multiple dire
 server.watch([__dirname + "/js", __dirname + "/css"]);
 ```
 
-Using originalPath option:
+## Using the `originalPath` option:
 
 ```js
 // server.js
@@ -82,7 +99,11 @@ var server = livereload.createServer({
 server.watch('/User/Workspace/test');
 ```
 
+Then run the server:
+
 `$ node server.js`
+
+Then, assuming your HTML file has a stylesheet link like this:
 
 ```html
 <!-- html -->
@@ -91,7 +112,7 @@ server.watch('/User/Workspace/test');
 </head>
 ```
 
-When `/User/Workspace/test/css/style.css` modified, the stylesheet will be reload.
+When `/User/Workspace/test/css/style.css` is modified, the stylesheet will be reload.
 
 # Command-line Options
 
