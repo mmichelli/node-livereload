@@ -5,7 +5,7 @@ runner = ->
   resolve    = require('path').resolve
   opts       = require 'opts'
   debug      = false;
-  
+
   opts.parse [
     {
       short: "v"
@@ -42,19 +42,28 @@ runner = ->
       long: "exts",
       description: "An array of extensions you want to observe. An example 'jade scss' (quotes are required). In addition to the defaults (html, css, js, png, gif, jpg, php, php5, py, rb, erb, and \"coffee.\").",
       required: false,
-      value: true  
+      value: true
+    }
+    {
+      short: "u"
+      long: "usepolling"
+      description: "Poll for file system changes. Set this to true to successfully watch files over a network.",
+      required: false,
+      value: true
     }
   ].reverse(), true
 
   port = opts.get('port') || 35729
   exclusions = opts.get('exclusions') || []
   exts = (opts.get('exts') || '').split ' '
-  
+  usePolling = opts.get('usepolling') || false
+
   server = livereload.createServer({
     port: port
     debug: debug
     exclusions: exclusions,
     exts: exts
+    usePolling: usePolling
   })
 
   path = resolve(process.argv[2] || '.')
