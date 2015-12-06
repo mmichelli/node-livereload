@@ -121,6 +121,7 @@ The commandline options are
 * `-p` or `--port` to specify the listening port
 * `-d` or `--debug` to show debug messages when the browser reloads.
 * `-e` or `--exts` to include additional extentions that you want to observe. An example being -e 'jade scss'.  
+* `-u` or `--usepolling` to poll for file system changes. Set this to true to successfully watch files over a network.
 
 Specify the path when using the options.
 
@@ -143,6 +144,7 @@ The `createServer()` method supports a few basic options, passed as a JavaScript
 * `exclusions` lets you specify files to ignore. By default, this includes `.git/`, `.svn/`, and `.hg/`
 * `originalPath` Set URL you use for development, e.g 'http:/domain.com', then LiveReload will proxy this url to local path.
 * `overrideURL` lets you specify a different host for CSS files. This lets you edit local CSS files but view a live site. See <http://feedback.livereload.com/knowledgebase/articles/86220-preview-css-changes-against-a-live-site-then-uplo> for details.
+* `usePolling` Poll for file system changes. Set this to true to successfully watch files over a network.
 
 
 

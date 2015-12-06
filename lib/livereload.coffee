@@ -36,6 +36,8 @@ class Server
     @config.originalPath ?= ''
     @config.overrideURL ?= ''
 
+    @config.usePolling ?= false
+
   listen: ->
     @debug "LiveReload is waiting for browser to connect."
 
@@ -67,7 +69,7 @@ class Server
     @debug "Browser disconnected."
 
   watch: (paths) ->
-    @watcher = chokidar.watch paths, {ignoreInitial: true, ignored: @config.exclusions}
+    @watcher = chokidar.watch paths, {ignoreInitial: true, ignored: @config.exclusions, usePolling: @config.usePolling}
     @watcher.on 'add', (path) => @filterRefresh path
     @watcher.on 'change', (path) => @filterRefresh path
     @watcher.on 'unlink', (path) => @filterRefresh path
