@@ -1,6 +1,6 @@
 { "name": "livereload"
 , "description": "LiveReload server"
-, "version": "0.4.0"
+, "version": "0.4.1"
 , "contributors": [
     { "name": "Brian P. Hogan", "email": "brianhogan@napcs.com" }
   ]
