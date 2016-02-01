@@ -12,6 +12,9 @@ You can use this by either adding a snippet of code to the bottom of your HTML p
 
 Install the LiveReload browser plugins by visiting [http://help.livereload.com/kb/general-use/browser-extensions](http://help.livereload.com/kb/general-use/browser-extensions).
 
+**Firefox now requires you to allow unsigned extensions. View the Firefox documentation
+for more info on this.**
+
 Only Google Chrome supports viewing `file:///` URLS, and you have to specifically enable it. If you are using other browsers and want to use `file:///` URLs, add the JS code to the page as shown in the next section.
 
 ## Method 2: Add code to page
@@ -120,7 +123,7 @@ The commandline options are
 
 * `-p` or `--port` to specify the listening port
 * `-d` or `--debug` to show debug messages when the browser reloads.
-* `-e` or `--exts` to include additional extentions that you want to observe. An example being -e 'jade scss'.  
+* `-e` or `--exts` to include additional extentions that you want to observe. An example being -e 'jade scss'.
 * `-u` or `--usepolling` to poll for file system changes. Set this to true to successfully watch files over a network.
 
 Specify the path when using the options.
